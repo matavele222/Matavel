@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entradas de Stock - Mercearia Stock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/tables.css"><link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar"><div class="sidebar-brand"><i class="fa-solid fa-store"></i><h2>Mercearia</h2></div><nav><ul id="menuList"></ul></nav></aside>
+  <main class="content">
+    <header class="topbar"><div class="topbar-left"><button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button><h1>Entradas de Stock</h1></div><button id="logoutBtn" class="btn btn-danger btn-sm">Terminar Sessão</button></header>
+    <div class="page-header"><p>Registo de entradas de mercadoria</p><button class="btn btn-primary" id="btnNovo"><i class="fa-solid fa-plus"></i> Nova Entrada</button></div>
+    <p id="msg" class="form-message"></p>
+    <div class="table-wrap"><table><thead><tr><th>Data</th><th>Produto</th><th>Qtd</th><th>Preço Compra</th><th>Factura</th><th>Utilizador</th></tr></thead><tbody id="tabela"></tbody></table></div>
+  </main>
+</div>
+<div class="modal" id="modalForm"><div class="modal-content">
+  <div class="modal-header"><h2>Nova Entrada de Stock</h2><button class="modal-close" data-close-modal="modalForm">&times;</button></div>
+  <form id="formEntrada">
+    <div class="form-group"><label>Produto *</label><select id="produtoId" required></select></div>
+    <div class="form-row"><div class="form-group"><label>Quantidade *</label><input id="quantidade" type="number" min="1" required></div>
+    <div class="form-group"><label>Preço de Compra</label><input id="precoCompra" type="number" min="0" step="0.01"></div></div>
+    <div class="form-row"><div class="form-group"><label>Data de Entrada</label><input id="dataEntrada" type="date"></div>
+    <div class="form-group"><label>Nº Factura</label><input id="numeroFactura"></div></div>
+    <div class="form-group"><label>Observação</label><textarea id="observacao" rows="2"></textarea></div>
+    <button type="submit" class="btn btn-primary btn-block">Registar Entrada</button>
+  </form><p id="formMsg" class="form-message"></p>
+</div></div>
+<script src="../js/database.js"></script><script src="../js/session.js"></script><script src="../js/utils.js"></script><script src="../js/layout.js"></script><script src="../js/entradas.js"></script>
+</body></html>

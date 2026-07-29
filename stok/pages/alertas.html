@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alertas - Mercearia Stock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/dashboard.css"><link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar"><div class="sidebar-brand"><i class="fa-solid fa-store"></i><h2>Mercearia</h2></div><nav><ul id="menuList"></ul></nav></aside>
+  <main class="content">
+    <header class="topbar"><div class="topbar-left"><button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button><h1>Alertas</h1></div><button id="logoutBtn" class="btn btn-danger btn-sm">Terminar Sessão</button></header>
+    <section class="panel"><h3>Alertas do Sistema</h3><div id="alertasLista"></div></section>
+  </main>
+</div>
+<script src="../js/database.js"></script><script src="../js/session.js"></script><script src="../js/utils.js"></script><script src="../js/layout.js"></script><script src="../js/alertas.js"></script>
+</body></html>

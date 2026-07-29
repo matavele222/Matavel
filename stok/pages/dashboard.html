@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Mercearia Stock</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/tables.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-brand"><i class="fa-solid fa-store"></i><h2>Mercearia</h2></div>
+      <nav><ul id="menuList"></ul></nav>
+    </aside>
+    <main class="content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
+          <div>
+            <h1 id="dashboardTitle">Dashboard</h1>
+            <p id="welcomeText" style="color:var(--muted);font-size:14px"></p>
+          </div>
+        </div>
+        <div class="topbar-user">
+          <strong id="userName"></strong>
+          <span id="userRole"></span>
+        </div>
+        <button id="logoutBtn" class="btn btn-danger btn-sm"><i class="fa-solid fa-right-from-bracket"></i> Terminar Sessão</button>
+      </header>
+
+      <section class="cards" id="dashboardCards"></section>
+
+      <div id="adminSections" style="display:none">
+        <div class="grid-2">
+          <section class="panel">
+            <h3><i class="fa-solid fa-triangle-exclamation"></i> Produtos com Stock Baixo</h3>
+            <div class="table-wrap"><table><thead><tr><th>Produto</th><th>Stock</th><th>Mínimo</th></tr></thead><tbody id="stockBaixoTable"></tbody></table></div>
+          </section>
+          <section class="panel">
+            <h3><i class="fa-solid fa-circle-xmark"></i> Produtos Esgotados</h3>
+            <div class="table-wrap"><table><thead><tr><th>Produto</th><th>Código</th></tr></thead><tbody id="esgotadosTable"></tbody></table></div>
+          </section>
+        </div>
+        <section class="panel">
+          <h3><i class="fa-solid fa-clock"></i> Vendas Recentes</h3>
+          <div class="table-wrap"><table><thead><tr><th>Data</th><th>Produto</th><th>Qtd</th><th>Total</th><th>Vendedor</th></tr></thead><tbody id="vendasRecentesTable"></tbody></table></div>
+        </section>
+        <div class="grid-2">
+          <section class="panel"><h3>Vendas dos Últimos 7 Dias</h3><div class="chart-container"><canvas id="chartVendas7d"></canvas></div></section>
+          <section class="panel"><h3>Produtos Mais Vendidos</h3><div class="chart-container"><canvas id="chartTopProdutos"></canvas></div></section>
+        </div>
+        <section class="panel"><h3>Vendas por Categoria</h3><div class="chart-container"><canvas id="chartCategorias"></canvas></div></section>
+      </div>
+
+      <div id="vendedorSections" style="display:none">
+        <div style="margin-bottom:16px"><a href="./vendas.html" class="btn btn-primary"><i class="fa-solid fa-cart-plus"></i> Nova Venda</a></div>
+        <div class="grid-2">
+          <section class="panel">
+            <h3>Últimas Vendas</h3>
+            <div class="table-wrap"><table><thead><tr><th>Data</th><th>Total</th><th>Pagamento</th></tr></thead><tbody id="minhasVendasTable"></tbody></table></div>
+          </section>
+          <section class="panel"><h3>Produtos Mais Vendidos</h3><div class="chart-container"><canvas id="chartVendedorTop"></canvas></div></section>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="../js/database.js"></script>
+  <script src="../js/session.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>

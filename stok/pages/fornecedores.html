@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fornecedores - Mercearia Stock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/tables.css"><link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar"><div class="sidebar-brand"><i class="fa-solid fa-store"></i><h2>Mercearia</h2></div><nav><ul id="menuList"></ul></nav></aside>
+  <main class="content">
+    <header class="topbar"><div class="topbar-left"><button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button><h1>Fornecedores</h1></div><button id="logoutBtn" class="btn btn-danger btn-sm">Terminar Sessão</button></header>
+    <div class="page-header"><p>Gestão de fornecedores</p><button class="btn btn-primary" id="btnNovo"><i class="fa-solid fa-plus"></i> Adicionar</button></div>
+    <div class="search-bar"><input type="text" id="pesquisa" placeholder="Pesquisar fornecedor..."></div>
+    <p id="msg" class="form-message"></p>
+    <div class="table-wrap"><table><thead><tr><th>Empresa</th><th>Contacto</th><th>Telefone</th><th>Email</th><th>Estado</th><th>Produtos</th><th>Acções</th></tr></thead><tbody id="tabela"></tbody></table></div>
+  </main>
+</div>
+<div class="modal" id="modalForm"><div class="modal-content" style="width:min(600px,100%)">
+  <div class="modal-header"><h2 id="modalTitulo">Adicionar Fornecedor</h2><button class="modal-close" data-close-modal="modalForm">&times;</button></div>
+  <form id="formForn"><input type="hidden" id="fornId">
+    <div class="form-row"><div class="form-group"><label>Nome da Empresa *</label><input id="nomeEmpresa" required></div><div class="form-group"><label>Nome do Contacto</label><input id="nomeContacto"></div></div>
+    <div class="form-row"><div class="form-group"><label>Telefone</label><input id="telefone"></div><div class="form-group"><label>Email</label><input id="email" type="email"></div></div>
+    <div class="form-group"><label>Endereço</label><input id="endereco"></div>
+    <div class="form-row"><div class="form-group"><label>NUIT</label><input id="nuit"></div><div class="form-group"><label>Estado</label><select id="estado"><option value="ACTIVO">ACTIVO</option><option value="INACTIVO">INACTIVO</option></select></div></div>
+    <div class="form-group"><label>Descrição</label><textarea id="descricao" rows="2"></textarea></div>
+    <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+  </form><p id="formMsg" class="form-message"></p>
+</div></div>
+<script src="../js/database.js"></script><script src="../js/session.js"></script><script src="../js/utils.js"></script><script src="../js/layout.js"></script><script src="../js/fornecedores.js"></script>
+</body></html>

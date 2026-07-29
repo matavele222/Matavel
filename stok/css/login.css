@@ -1,0 +1,137 @@
+.login-body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(20, 53, 44, 0.92), rgba(27, 107, 74, 0.85)),
+    radial-gradient(circle at 20% 80%, rgba(196, 122, 26, 0.35), transparent 50%),
+    #14352c;
+}
+
+.login-body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.06) 1px, transparent 0);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.login-container {
+  width: min(440px, 100%);
+  position: relative;
+  z-index: 1;
+  animation: loginIn 0.5s ease;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 22px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.28);
+  padding: 36px 32px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.login-brand {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.login-brand-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 14px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #1b6b4a, #14352c);
+  color: #fff;
+  font-size: 28px;
+  box-shadow: 0 10px 24px rgba(27, 107, 74, 0.35);
+}
+
+.login-brand .brand-name {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.login-card h1 {
+  display: none;
+}
+
+.login-subtitle {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#loginForm .form-group label {
+  color: var(--text);
+}
+
+#loginForm input {
+  padding: 12px 14px;
+  font-size: 15px;
+}
+
+.password-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.password-wrap input {
+  flex: 1;
+}
+
+.icon-btn {
+  border: 1px solid var(--border);
+  background: var(--bg-accent);
+  border-radius: 11px;
+  width: 46px;
+  height: 46px;
+  cursor: pointer;
+  color: var(--muted);
+  transition: background 0.15s, color 0.15s;
+}
+.icon-btn:hover {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+#loginForm .btn-primary {
+  margin-top: 10px;
+  padding: 13px;
+  font-size: 15px;
+}
+
+.login-footer {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+@keyframes loginIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 480px) {
+  .login-card { padding: 28px 20px; }
+  .login-brand .brand-name { font-size: 24px; }
+}

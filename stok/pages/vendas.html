@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendas - Mercearia Stock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/tables.css"><link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar"><div class="sidebar-brand"><i class="fa-solid fa-store"></i><h2>Mercearia</h2></div><nav><ul id="menuList"></ul></nav></aside>
+  <main class="content">
+    <header class="topbar"><div class="topbar-left"><button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button><h1 id="pageTitle">Vendas</h1></div><button id="logoutBtn" class="btn btn-danger btn-sm">Terminar Sessão</button></header>
+
+    <div id="secVenda" style="display:none">
+      <div class="grid-2">
+        <section class="panel">
+          <h3>Seleccionar Produto</h3>
+          <p id="prodSelecionadoInfo" class="form-message" style="min-height:auto;margin-bottom:10px"></p>
+          <div class="search-bar"><input type="text" id="pesquisaProd" placeholder="Pesquisar produto..."></div>
+          <div class="table-wrap" style="max-height:300px;overflow-y:auto"><table><thead><tr><th>Produto</th><th>Preço</th><th>Stock</th><th>Estado</th><th></th></tr></thead><tbody id="listaProdutos"></tbody></table></div>
+          <div class="form-row" style="margin-top:14px">
+            <div class="form-group"><label>Quantidade</label><input id="qtdAdd" type="number" min="1" value="1"></div>
+            <div class="form-group" style="justify-content:flex-end"><label>&nbsp;</label><button class="btn btn-primary" id="btnAddCarrinho">Adicionar ao Carrinho</button></div>
+          </div>
+          <input type="hidden" id="prodSelecionado">
+        </section>
+        <section class="cart-panel">
+          <h3><i class="fa-solid fa-cart-shopping"></i> Carrinho de Vendas</h3>
+          <div class="table-wrap"><table><thead><tr><th>Produto</th><th>Qtd</th><th>Preço</th><th>Total</th><th></th></tr></thead><tbody id="carrinho"></tbody></table></div>
+          <div class="cart-total">TOTAL: <span id="totalCarrinho">0,00 MT</span></div>
+          <div class="form-group" style="margin-top:14px"><label>Método de Pagamento</label>
+            <select id="metodoPagamento"><option>Dinheiro</option><option>M-Pesa</option><option>e-Mola</option><option>Cartão</option><option>Outro</option></select>
+          </div>
+          <button class="btn btn-success btn-block" id="btnConfirmar" style="margin-top:10px"><i class="fa-solid fa-check"></i> Confirmar Venda</button>
+          <p id="msgVenda" class="form-message"></p>
+        </section>
+      </div>
+    </div>
+
+    <div id="secLista">
+      <p id="msg" class="form-message"></p>
+      <div class="table-wrap"><table><thead><tr><th>Recibo</th><th>Data</th><th>Hora</th><th>Vendedor</th><th>Total</th><th>Pagamento</th></tr></thead><tbody id="tabelaVendas"></tbody></table></div>
+    </div>
+  </main>
+</div>
+
+<script src="../js/database.js"></script><script src="../js/session.js"></script><script src="../js/utils.js"></script><script src="../js/layout.js"></script><script src="../js/vendas.js"></script>
+</body></html>

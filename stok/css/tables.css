@@ -1,0 +1,52 @@
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead {
+  background: linear-gradient(180deg, #f4f8f5, #eef4f0);
+}
+
+th {
+  text-align: left;
+  padding: 13px 14px;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+tbody tr {
+  transition: background 0.12s ease;
+}
+tbody tr:hover { background: #f6faf7; }
+tbody tr:last-child td { border-bottom: none; }
+
+tr.produto-seleccionado {
+  background: var(--primary-soft) !important;
+}
+tr.produto-seleccionado td:first-child {
+  border-left: 3px solid var(--primary);
+}
+tr.produto-no-carrinho {
+  background: var(--accent-soft) !important;
+}
+
+td .actions { white-space: nowrap; }
