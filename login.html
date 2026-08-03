@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Mercearia Stock</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="login-body">
+  <main class="login-layout">
+    <section class="login-left">
+      <div class="promo-overlay"></div>
+      <div class="promo-mark"><i class="fa-solid fa-store"></i></div>
+      <h2>Controle o seu negócio com confiança</h2>
+      <p class="promo-text">Relatórios claros, gestão de stock inteligente e vendas rápidas. Interface pensada para mercearias e pequenos comércios.</p>
+      <ul class="promo-features">
+        <li><i class="fa-solid fa-check"></i> Atualização de stock em tempo real</li>
+        <li><i class="fa-solid fa-check"></i> Vendas e recibos integrados</li>
+        <li><i class="fa-solid fa-check"></i> Relatórios de lucro e performance</li>
+      </ul>
+      <div class="promo-cta">
+        <a class="btn btn-secondary" href="home.html">Saber Mais</a>
+      </div>
+    </section>
+
+    <section class="login-right">
+      <div class="login-card">
+        <div class="login-brand">
+          <div class="login-brand-icon"><i class="fa-solid fa-store"></i></div>
+          <p class="brand-name">Mercearia</p>
+          <p class="login-subtitle">Sistema de Gestão e Controlo de Stock</p>
+        </div>
+
+        <form id="loginForm" novalidate>
+          <div class="form-group">
+            <label for="username">Nome de utilizador</label>
+            <input id="username" name="username" type="text" required autocomplete="username" placeholder="Introduza o username">
+          </div>
+
+          <div class="form-group">
+            <label for="password">Palavra-passe</label>
+            <div class="password-wrap">
+              <input id="password" name="password" type="password" required autocomplete="current-password" placeholder="Introduza a palavra-passe">
+              <button id="togglePassword" class="icon-btn" type="button" aria-label="Mostrar palavra-passe">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label class="checkbox"><input type="checkbox" id="remember"> Lembrar-me</label>
+            <a href="#" class="forgot-link">Esqueci a palavra-passe</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            <i class="fa-solid fa-right-to-bracket"></i> Entrar
+          </button>
+
+          <div class="social-login">
+            <button type="button" class="btn btn-secondary"><i class="fa-brands fa-google"></i> Entrar com Google</button>
+            <button type="button" class="btn btn-secondary"><i class="fa-brands fa-facebook"></i> Entrar com Facebook</button>
+          </div>
+        </form>
+
+        <p id="loginMessage" class="form-message" role="status" aria-live="polite"></p>
+        <p class="login-footer">Gestão local de stock · Dados seguros no navegador</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/database.js"></script>
+  <script src="js/session.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
