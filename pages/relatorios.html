@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatórios - Mercearia Stock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/tables.css"><link rel="stylesheet" href="../css/responsive.css">
+  <style>
+    .report-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .report-tabs .btn.active { background: var(--primary); color: #fff; }
+    .report-section { display: none; }
+    .report-section.active { display: block; }
+    .print-area { background: #fff; }
+    @media print {
+      .sidebar, .topbar, .search-bar, .report-tabs, .no-print, #logoutBtn, .menu-toggle { display: none !important; }
+      .layout { display: block; }
+      .content { padding: 0; }
+      .report-section { display: block !important; page-break-inside: avoid; margin-bottom: 24px; }
+      .panel { border: none; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar no-print"><div class="sidebar-brand"><i class="fa-solid fa-store"></i><h2>Mercearia</h2></div><nav><ul id="menuList"></ul></nav></aside>
+  <main class="content">
+    <header class="topbar no-print">
+      <div class="topbar-left"><button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button><h1>Relatórios</h1></div>
+      <button id="logoutBtn" class="btn btn-danger btn-sm">Terminar Sessão</button>
+    </header>
+
+    <section class="panel no-print">
+      <h3>Filtros</h3>
+      <div class="search-bar">
+        <input type="date" id="dataInicio" title="Data inicial">
+        <input type="date" id="dataFim" title="Data final">
+        <select id="filtroProduto"><option value="">Todos os produtos</option></select>
+        <select id="filtroCategoria"><option value="">Todas as categorias</option></select>
+        <select id="filtroVendedor"><option value="">Todos os vendedores</option></select>
+        <button class="btn btn-primary" id="btnFiltrar"><i class="fa-solid fa-filter"></i> Filtrar</button>
+        <button class="btn btn-secondary" id="btnLimpar"><i class="fa-solid fa-eraser"></i> Limpar</button>
+        <button class="btn btn-secondary" id="btnExportar"><i class="fa-solid fa-file-csv"></i> CSV</button>
+        <button class="btn btn-success" id="btnPdf"><i class="fa-solid fa-file-pdf"></i> Exportar PDF</button>
+      </div>
+    </section>
+
+    <div class="cards" id="resumoCards"></div>
+
+    <div class="report-tabs no-print">
+      <button class="btn btn-secondary active" data-tab="todos">Todos</button>
+      <button class="btn btn-secondary" data-tab="stock">Stock</button>
+      <button class="btn btn-secondary" data-tab="vendas">Vendas</button>
+      <button class="btn btn-secondary" data-tab="entradas">Entradas</button>
+    </div>
+
+    <div class="print-area" id="areaRelatorio">
+      <div class="report-section active" data-section="stock">
+        <section class="panel">
+          <h3>Stock Actual</h3>
+          <div class="table-wrap"><table><thead><tr><th>Código</th><th>Produto</th><th>Categoria</th><th>Stock</th><th>Mínimo</th><th>Preço Compra</th><th>Preço Venda</th><th>Estado</th><th>Valor Stock</th></tr></thead><tbody id="tabelaStock"></tbody></table></div>
+        </section>
+        <div class="grid-2">
+          <section class="panel">
+            <h3>Produtos com Stock Baixo</h3>
+            <div class="table-wrap"><table><thead><tr><th>Produto</th><th>Stock</th><th>Mínimo</th></tr></thead><tbody id="tabelaStockBaixo"></tbody></table></div>
+          </section>
+          <section class="panel">
+            <h3>Produtos Esgotados</h3>
+            <div class="table-wrap"><table><thead><tr><th>Código</th><th>Produto</th><th>Categoria</th></tr></thead><tbody id="tabelaEsgotados"></tbody></table></div>
+          </section>
+        </div>
+        <section class="panel">
+          <h3>Produtos por Categoria</h3>
+          <div class="table-wrap"><table><thead><tr><th>Categoria</th><th>Nº Produtos</th><th>Stock Total</th><th>Valor Stock</th></tr></thead><tbody id="tabelaPorCategoria"></tbody></table></div>
+        </section>
+      </div>
+
+      <div class="report-section active" data-section="vendas">
+        <section class="panel">
+          <h3>Vendas do Período</h3>
+          <div class="table-wrap"><table><thead><tr><th>Data</th><th>Hora</th><th>Recibo</th><th>Vendedor</th><th>Total</th><th>Pagamento</th></tr></thead><tbody id="tabelaVendas"></tbody></table></div>
+        </section>
+        <div class="grid-2">
+          <section class="panel">
+            <h3>Vendas por Vendedor</h3>
+            <div class="table-wrap"><table><thead><tr><th>Vendedor</th><th>Nº Vendas</th><th>Total</th></tr></thead><tbody id="tabelaPorVendedor"></tbody></table></div>
+          </section>
+          <section class="panel">
+            <h3>Vendas por Método de Pagamento</h3>
+            <div class="table-wrap"><table><thead><tr><th>Método</th><th>Nº Vendas</th><th>Total</th></tr></thead><tbody id="tabelaPorPagamento"></tbody></table></div>
+          </section>
+        </div>
+        <section class="panel">
+          <h3>Vendas por Produto</h3>
+          <div class="table-wrap"><table><thead><tr><th>Produto</th><th>Qtd Vendida</th><th>Total</th></tr></thead><tbody id="tabelaVendasProduto"></tbody></table></div>
+        </section>
+        <section class="panel">
+          <h3>Vendas por Categoria</h3>
+          <div class="table-wrap"><table><thead><tr><th>Categoria</th><th>Qtd</th><th>Total</th></tr></thead><tbody id="tabelaVendasCategoria"></tbody></table></div>
+        </section>
+        <div class="grid-2">
+          <section class="panel">
+            <h3>Resumo Temporal</h3>
+            <div class="table-wrap"><table><thead><tr><th>Período</th><th>Nº Vendas</th><th>Total</th></tr></thead><tbody id="tabelaTemporal"></tbody></table></div>
+          </section>
+          <section class="panel">
+            <h3>Detalhe dos Itens Vendidos</h3>
+            <div class="table-wrap"><table><thead><tr><th>Data</th><th>Produto</th><th>Qtd</th><th>Preço</th><th>Total</th><th>Vendedor</th></tr></thead><tbody id="tabelaItensVenda"></tbody></table></div>
+          </section>
+        </div>
+      </div>
+
+      <div class="report-section active" data-section="entradas">
+        <section class="panel">
+          <h3>Entradas de Stock</h3>
+          <div class="table-wrap"><table><thead><tr><th>Data</th><th>Produto</th><th>Qtd</th><th>Preço Compra</th><th>Factura</th><th>Utilizador</th></tr></thead><tbody id="tabelaEntradas"></tbody></table></div>
+        </section>
+        <section class="panel">
+          <h3>Produtos Recebidos (Resumo)</h3>
+          <div class="table-wrap"><table><thead><tr><th>Produto</th><th>Qtd Recebida</th><th>Nº Entradas</th><th>Valor Total</th></tr></thead><tbody id="tabelaProdutosRecebidos"></tbody></table></div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="../js/database.js"></script>
+<script src="../js/session.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/layout.js"></script>
+<script src="../js/relatorios.js"></script>
+</body>
+</html>

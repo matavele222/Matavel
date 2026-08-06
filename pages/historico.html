@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Histórico - Mercearia Stock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/tables.css"><link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar"><div class="sidebar-brand"><i class="fa-solid fa-store"></i><h2>Mercearia</h2></div><nav><ul id="menuList"></ul></nav></aside>
+  <main class="content">
+    <header class="topbar"><div class="topbar-left"><button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button><h1>Histórico de Operações</h1></div><button id="logoutBtn" class="btn btn-danger btn-sm">Terminar Sessão</button></header>
+    <div class="search-bar"><input type="text" id="pesquisa" placeholder="Pesquisar no histórico..."><select id="filtroOp"><option value="">Todas as operações</option><option>LOGIN</option><option>LOGOUT</option><option>VENDA</option><option>ENTRADA_STOCK</option><option>CADASTRO_PRODUTO</option><option>EDICAO_PRODUTO</option><option>ELIMINACAO_PRODUTO</option><option>CADASTRO_VENDEDOR</option><option>EDICAO_VENDEDOR</option><option>DESACTIVACAO_VENDEDOR</option></select></div>
+    <div class="table-wrap"><table><thead><tr><th>Data</th><th>Utilizador</th><th>Operação</th><th>Descrição</th><th>Hora</th></tr></thead><tbody id="tabela"></tbody></table></div>
+  </main>
+</div>
+<script src="../js/database.js"></script><script src="../js/session.js"></script><script src="../js/utils.js"></script><script src="../js/layout.js"></script><script src="../js/historico.js"></script>
+</body></html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Perfil - Mercearia Stock</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="../css/dashboard.css"><link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar"><div class="sidebar-brand"><i class="fa-solid fa-store"></i><h2>Mercearia</h2></div><nav><ul id="menuList"></ul></nav></aside>
+  <main class="content">
+    <header class="topbar"><div class="topbar-left"><button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button><h1>Meu Perfil</h1></div><button id="logoutBtn" class="btn btn-danger btn-sm">Terminar Sessão</button></header>
+    <div class="grid-2">
+      <section class="panel">
+        <h3>Dados do Utilizador</h3>
+        <table><tbody id="infoPerfil"></tbody></table>
+      </section>
+      <section class="panel">
+        <h3>Alterar Dados</h3>
+        <form id="formPerfil">
+          <div class="form-group"><label>Nome</label><input id="nome" required></div>
+          <div class="form-group"><label>Telefone</label><input id="telefone"></div>
+          <div class="form-group"><label>Nova Palavra-passe</label><input id="password" type="password"></div>
+          <div class="form-group"><label>Confirmar Palavra-passe</label><input id="passwordConfirm" type="password"></div>
+          <button type="submit" class="btn btn-primary">Guardar Alterações</button>
+        </form>
+        <p id="msg" class="form-message"></p>
+      </section>
+    </div>
+  </main>
+</div>
+<script src="../js/database.js"></script><script src="../js/session.js"></script><script src="../js/utils.js"></script><script src="../js/layout.js"></script><script src="../js/perfil.js"></script>
+</body></html>
